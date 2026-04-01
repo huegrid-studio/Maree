@@ -1,0 +1,313 @@
+:root,
+:root.dark {
+  --t-gray-1: #0b0a09;
+  --t-gray-2: #181816;
+  --t-gray-3: #23221f;
+  --t-gray-4: #2a2926;
+  --t-gray-5: #32312d;
+  --t-gray-6: #3c3a35;
+  --t-gray-7: #4a4841;
+  --t-gray-8: #636057;
+  --t-gray-9: #716d62;
+  --t-gray-10: #7e7b70;
+  --t-gray-11: #b7b3a9;
+  --t-gray-12: #efeeeb;
+
+  --t-page: #0b0a0a;
+  --t-panel: var(--t-gray-1);
+  --t-panel-border: var(--t-gray-6);
+  --t-panel-w: 320px;
+
+  --t-surface-0: var(--t-gray-2);
+  --t-surface-1: var(--t-gray-3);
+  --t-surface-2: var(--t-gray-4);
+  --t-surface-3: var(--t-gray-5);
+  --t-surface-4: var(--t-gray-6);
+  --t-surface-5: var(--t-gray-7);
+
+  --t-border-0: var(--t-gray-6);
+  --t-border-1: var(--t-gray-7);
+  --t-border-2: var(--t-gray-7);
+  --t-border-3: var(--t-gray-8);
+  --t-border-focus: var(--t-accent);
+
+  --t-text: #efeeeb;
+  --t-text-2: #b7b3a9;
+  --t-text-3: #b7b3a9;
+  --t-text-4: #716d62;
+  --t-text-5: #636057;
+  --t-text-6: #4a4841;
+  --t-text-unit: #b7b3a9;
+
+  --t-icon: rgba(239,238,235,0.45);
+  --t-label: rgba(239,238,235,0.3);
+  --t-label-hover: rgba(239,238,235,0.7);
+
+  --t-accent: #feb201;
+  --t-accent-hover: #f3a700;
+  --t-accent-subtle: #ffc035;
+  --t-accent-text: #ffc035;
+  --t-accent-glow: rgba(254,178,1,0.55);
+  --t-accent-contrast: #2c1f09;
+
+  --t-control-hover: var(--t-gray-4);
+
+  --t-scrollbar: var(--t-gray-5);
+  --t-scrollbar-hover: var(--t-gray-6);
+
+  --t-slider-fill: rgba(113,109,98,0.4);
+  --t-slider-separator: rgba(74,72,65,0.3);
+  --t-slider-handle: rgba(239,238,235,0.9);
+
+  --t-toggle-active-bg: rgba(239,238,235,0.12);
+  --t-toggle-active-text: #ffc035;
+  --t-toggle-inactive-text: rgba(239,238,235,0.4);
+
+  --t-select-border: rgba(239,238,235,0.15);
+  --t-select-hover: rgba(239,238,235,0.06);
+  --t-select-text: rgba(239,238,235,0.6);
+
+  --t-grid-selected-bg: var(--t-gray-4);
+  --t-grid-selected-border: #efeeeb;
+  --t-grid-border: var(--t-gray-7);
+  --t-grid-bg: rgba(42,41,38,0.5);
+  --t-grid-hover-border: var(--t-gray-8);
+  --t-grid-hover-bg: var(--t-gray-4);
+  --t-grid-text: #7e7b70;
+  --t-grid-text-dim: #716d62;
+  --t-grid-text-dimmer: #636057;
+  --t-grid-dashed-border: var(--t-gray-8);
+  --t-grid-dashed-hover: #7e7b70;
+  --t-grid-delete-bg: #dc2626;
+  --t-grid-delete-hover: #ef4444;
+
+  --t-picker-bg: var(--t-gray-1);
+  --t-picker-border: var(--t-gray-7);
+  --t-picker-search-text: #efeeeb;
+  --t-picker-search-placeholder: var(--t-gray-8);
+  --t-picker-close: var(--t-gray-9);
+  --t-picker-close-hover: #b7b3a9;
+  --t-picker-cell-bg: rgba(42,41,38,0.5);
+  --t-picker-cell-border: var(--t-gray-7);
+  --t-picker-cell-text: #7e7b70;
+  --t-picker-loading-bg: var(--t-gray-7);
+  --t-picker-empty-text: var(--t-gray-8);
+
+  --t-export-progress-bg: var(--t-gray-2);
+  --t-export-progress-fill: #feb201;
+
+  --t-swatch-border: rgba(239,238,235,0.1);
+  --t-swatch-slider-border: rgba(239,238,235,0.1);
+  --t-swatch-cursor: #efeeeb;
+  --t-swatch-cursor-glow: rgba(254,178,1,0.55);
+
+  --t-toggle-knob-on: #feb201;
+  --t-toggle-knob-on-glow: 0px 0px 18px 0px rgba(254,178,1,0.55), 0px 0px 10px 0px rgba(254,178,1,0.6);
+  --t-toggle-knob-off: #716d62;
+  --t-toggle-track: var(--t-gray-3);
+
+  --t-slider-tick: #716d62;
+  --t-slider-cursor: #feb201;
+  --t-slider-cursor-glow: 0px 0px 18px 0px rgba(254,178,1,0.55);
+
+  --t-input-caret: #efeeeb;
+  --t-input-underline: rgba(239,238,235,0.1);
+  --t-input-underline-active: rgba(239,238,235,0.2);
+
+  --t-title-icon: #efeeeb;
+  --t-shadow: none;
+
+  --t-clip-invert: invert(1);
+
+  --t-font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --t-font-weight: 400;
+  --t-line-height: 1.5;
+
+  --t-font-xxs: 10px;
+  --t-font-xs: 11px;
+  --t-font-sm: 12px;
+  --t-font-md: 14px;
+  --t-font-lg: 16px;
+
+  --t-space-0-5: 2px;
+  --t-space-1: 4px;
+  --t-space-1-5: 6px;
+  --t-space-2: 8px;
+  --t-space-2-5: 10px;
+  --t-space-3: 12px;
+  --t-space-4: 16px;
+  --t-space-5: 20px;
+  --t-space-6: 24px;
+
+  --t-radius-xs: 3px;
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 8px;
+  --t-radius-xl: 12px;
+  --t-radius-full: 9999px;
+
+  --t-control-h: 32px;
+  --t-control-h-lg: 44px;
+  --t-control-h-touch: 40px;
+  --t-tab-h: 36px;
+  --t-header-h: 40px;
+  --t-footer-h: 40px;
+  --t-icon-xs: 10px;
+  --t-icon-sm: 12px;
+  --t-icon-md: 14px;
+  --t-icon-base: 16px;
+  --t-icon-lg: 20px;
+  --t-icon-xl: 24px;
+  --t-icon-2xl: 28px;
+  --t-border-w: 1px;
+  --t-border-w-hairline: 0.5px;
+  --t-nudge-1: -1px;
+  --t-slider-pad-x: 12px;
+  --t-dropdown-offset: 4px;
+  --t-picker-w: 312px;
+  --t-picker-max-h: 340px;
+  --t-label-min-w: 72px;
+  --t-swatch-w: 50px;
+  --t-swatch-h: 14px;
+  --t-swatch-thumb: 28px;
+  --t-swatch-input-w: 8px;
+  --t-toggle-mini-w: 33px;
+  --t-toggle-knob-w: 14px;
+  --t-slider-tick-w: 1px;
+  --t-slider-tick-h: 12px;
+  --t-slider-track-w: 2px;
+  --t-slider-thumb-h: 6px;
+  --t-dropdown-max-h: 200px;
+  --t-shadow-panel: none;
+  --t-shadow-btn: none;
+  --t-toggle-w: 40px;
+  --t-toggle-h: 20px;
+  --t-toggle-knob-size: 16px;
+  --t-slider-handle-w: 3px;
+  --t-theme-btn-h: 28px;
+
+  --t-duration-fast: 80ms;
+  --t-duration-base: 150ms;
+  --t-duration-md: 200ms;
+  --t-duration-lg: 250ms;
+}
+
+:root.light {
+  --t-gray-1: #f2f2f1;
+  --t-gray-2: #eeedeb;
+  --t-gray-3: #e5e4e1;
+  --t-gray-4: #dddbd7;
+  --t-gray-5: #d5d3ce;
+  --t-gray-6: #cdcbc4;
+  --t-gray-7: #c2bfb8;
+  --t-gray-8: #afaca2;
+  --t-gray-9: #827e72;
+  --t-gray-10: #777368;
+  --t-gray-11: #58554d;
+  --t-gray-12: #232019;
+
+  --t-page: #f5f5f4;
+  --t-panel: var(--t-gray-1);
+  --t-panel-border: var(--t-gray-6);
+
+  --t-surface-0: var(--t-gray-2);
+  --t-surface-1: var(--t-gray-4);
+  --t-surface-2: var(--t-gray-5);
+  --t-surface-3: var(--t-gray-3);
+  --t-surface-4: var(--t-gray-6);
+  --t-surface-5: var(--t-gray-7);
+
+  --t-border-0: var(--t-gray-6);
+  --t-border-1: var(--t-gray-7);
+  --t-border-2: var(--t-gray-7);
+  --t-border-3: var(--t-gray-8);
+  --t-border-focus: var(--t-accent);
+
+  --t-text: #232019;
+  --t-text-2: #58554d;
+  --t-text-3: #58554d;
+  --t-text-4: #827e72;
+  --t-text-5: #afaca2;
+  --t-text-6: #c2bfb8;
+  --t-text-unit: #58554d;
+
+  --t-icon: rgba(35,32,25,0.45);
+  --t-label: rgba(35,32,25,0.4);
+  --t-label-hover: rgba(35,32,25,0.7);
+
+  --t-accent: #feae00;
+  --t-accent-hover: #f0a500;
+  --t-accent-subtle: #915d00;
+  --t-accent-text: #915d00;
+  --t-accent-glow: rgba(254,174,0,0.35);
+  --t-accent-contrast: #2c1f09;
+
+  --t-control-hover: var(--t-gray-3);
+
+  --t-scrollbar: var(--t-gray-7);
+  --t-scrollbar-hover: var(--t-gray-8);
+
+  --t-slider-fill: rgba(130,126,114,0.15);
+  --t-slider-separator: rgba(35,32,25,0.06);
+  --t-slider-handle: rgba(35,32,25,0.6);
+
+  --t-toggle-active-bg: rgba(35,32,25,0.08);
+  --t-toggle-active-text: #915d00;
+  --t-toggle-inactive-text: rgba(35,32,25,0.35);
+
+  --t-select-border: rgba(35,32,25,0.12);
+  --t-select-hover: rgba(35,32,25,0.04);
+  --t-select-text: rgba(35,32,25,0.55);
+
+  --t-grid-selected-bg: var(--t-gray-5);
+  --t-grid-selected-border: #232019;
+  --t-grid-border: var(--t-gray-6);
+  --t-grid-bg: var(--t-gray-3);
+  --t-grid-hover-border: var(--t-gray-8);
+  --t-grid-hover-bg: var(--t-gray-4);
+  --t-grid-text: #777368;
+  --t-grid-text-dim: #827e72;
+  --t-grid-text-dimmer: #afaca2;
+  --t-grid-dashed-border: var(--t-gray-8);
+  --t-grid-dashed-hover: #777368;
+  --t-grid-delete-bg: #dc2626;
+  --t-grid-delete-hover: #ef4444;
+
+  --t-picker-bg: var(--t-gray-1);
+  --t-picker-border: var(--t-gray-6);
+  --t-picker-search-text: #232019;
+  --t-picker-search-placeholder: var(--t-gray-8);
+  --t-picker-close: var(--t-gray-9);
+  --t-picker-close-hover: #58554d;
+  --t-picker-cell-bg: var(--t-gray-3);
+  --t-picker-cell-border: var(--t-gray-6);
+  --t-picker-cell-text: #777368;
+  --t-picker-loading-bg: var(--t-gray-6);
+  --t-picker-empty-text: var(--t-gray-8);
+
+  --t-export-progress-bg: var(--t-gray-4);
+  --t-export-progress-fill: #feae00;
+
+  --t-swatch-border: rgba(35,32,25,0.12);
+  --t-swatch-slider-border: rgba(35,32,25,0.12);
+  --t-swatch-cursor: #58554d;
+  --t-swatch-cursor-glow: rgba(254,174,0,0.35);
+
+  --t-toggle-knob-on: #feae00;
+  --t-toggle-knob-on-glow: 0px 0px 14px 0px rgba(254,174,0,0.5), 0px 0px 8px 0px rgba(254,174,0,0.5);
+  --t-toggle-knob-off: var(--t-gray-8);
+  --t-toggle-track: var(--t-gray-4);
+
+  --t-slider-tick: var(--t-gray-8);
+  --t-slider-cursor: #feae00;
+  --t-slider-cursor-glow: 0px 0px 14px 0px rgba(254,174,0,0.5);
+
+  --t-input-caret: #232019;
+  --t-input-underline: rgba(35,32,25,0.1);
+  --t-input-underline-active: rgba(35,32,25,0.2);
+
+  --t-title-icon: #232019;
+  --t-shadow: none;
+
+  --t-clip-invert: invert(0);
+}

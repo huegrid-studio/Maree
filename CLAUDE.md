@@ -119,6 +119,9 @@ SVG, WEBP, JSON (config), WEBM, MP4 — all handled in `src/app/utils/export.ts`
 - **Synced component internals** — modify in Tessor, then sync; don't edit locally
 - **`src/app/config/sync.ts`** — only change if Tessor's URL changes
 
+## Active Work
+- [ ] (no active tasks — check BACKLOG.md for priorities)
+
 ## Documentation policy
 
 | Change category | Update |

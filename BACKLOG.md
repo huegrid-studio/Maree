@@ -1,25 +1,33 @@
-# Backlog
+# Backlog — Maree
 
 ## Cleanup
 
-- [ ] Audit `h264-mp4-encoder` dependency — heavy package, verify it's actively used for MP4 export
-- [ ] Review whether `pnpm.overrides` section in package.json is still needed (not using pnpm)
-- [ ] Review whether `postcss.config.mjs` is needed (Tailwind 4 uses `@tailwindcss/vite`, not PostCSS)
-- [ ] Break up `App.tsx` (~1800 lines) into smaller modules
+| Task | Platform | Model | Status |
+|---|---|---|---|
+| **Audit h264-mp4-encoder dependency** — heavy package, verify it's actively used for MP4 export | Either | Sonnet | Open |
+| **Review pnpm.overrides in package.json** — verify if still needed (not using pnpm) | Either | Sonnet | Open |
+| **Review postcss.config.mjs** — may not be needed (Tailwind 4 uses `@tailwindcss/vite`, not PostCSS) | Either | Sonnet | Open |
+| **Break up App.tsx** — ~1800 lines into smaller modules | Web | Opus | Open |
 
 ## Infrastructure
 
-- [ ] Set up deployment target (Vercel/Cloudflare Pages — static site, no backend)
-- [ ] Configure production `WORKBENCH_URL` once Tessor has a production deployment
-- [ ] Add CI/CD pipeline (build + type-check)
-- [ ] Add `.nvmrc` for Node version pinning
+| Task | Platform | Model | Status |
+|---|---|---|---|
+| **Set up deployment target** — Vercel/Cloudflare Pages (static site, no backend) | Either | Sonnet | Open |
+| **Configure production WORKBENCH_URL** — once Tessor has a production deployment | Either | Sonnet | Open |
+| **Add CI/CD pipeline** — build + type-check | Either | Sonnet | Open |
+| **Add .nvmrc** — for Node version pinning | Either | Sonnet | Open |
 
-## Sync improvements
+## Sync Improvements
 
-- [ ] Add local file-copy sync mode — read directly from `../Tessor/` sibling instead of HTTP
-- [ ] Add `--local` flag to `sync-from-workbench.mjs` for direct filesystem sync
+| Task | Platform | Model | Status |
+|---|---|---|---|
+| **Add local file-copy sync mode** — read directly from `../Tessor/` sibling instead of HTTP | Either | Opus | Open |
+| **Add --local flag to sync-from-workbench.mjs** — for direct filesystem sync | Either | Sonnet | Open |
 
 ## Features
 
-- [ ] Explore additional export resolution presets
-- [ ] Consider undo/redo for config changes
+| Task | Platform | Model | Status |
+|---|---|---|---|
+| **Explore additional export resolution presets** | Desktop | Sonnet | Open |
+| **Consider undo/redo for config changes** | Either | Opus | Open |

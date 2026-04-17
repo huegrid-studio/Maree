@@ -2,6 +2,23 @@
 
 Browser-only SVG pattern generator — React 18 + TypeScript + Tailwind CSS 4 + Vite 6. No backend. Syncs its entire UI component layer from the [Tessor](../Tessor/) design system workbench.
 
+## AI Coding Workflow
+
+This repo follows Arjun's hybrid AI coding workflow (Claude Code + Cursor + Codex). See the full spec: https://github.com/arjunphlox/arjun-ai-gems/blob/main/ai-workflow-orchestration.md
+
+**Tool-per-phase:**
+- **Claude Code** — research, planning, architecture, large refactors, MCP-heavy tasks, visual QA. Default tool.
+- **Cursor** — tight-loop IDE editing, UI polish, inline refactors where Tab / Cmd-K velocity matters.
+- **Codex** — async parallel work, mechanical-at-scale (test generation, dependency bumps, find/replace across many files).
+
+**Branch prefixes** (keeps parallel work from colliding):
+- `claude/*` — work done in Claude Code
+- `cursor/*` — work done in Cursor
+- `codex/*` — work done in Codex
+- `feature/*`, `fix/*` — human-authored or mixed
+
+**BACKLOG schema:** `| Task | Tool | Platform | Model | Status |` — every task gets tool / platform / reasoning-tier classified at capture time. Use `/to-do` to add tasks; it auto-classifies.
+
 ## Dev commands
 
 ```bash

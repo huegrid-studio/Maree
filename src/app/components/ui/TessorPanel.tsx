@@ -3,15 +3,48 @@ import { ChevronRight, Settings2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { hapticClick } from '../../utils/haptics';
 
+const CheckIcon = ({ style }: { style?: React.CSSProperties }) => (
+  <svg viewBox="0 0 256 256" style={style}>
+    <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z" fill="currentColor" />
+  </svg>
+);
+
+function SaveButton({ onSave }: { onSave: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <button
+      onClick={(e) => { e.stopPropagation(); onSave(); }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="flex items-center justify-center transition-colors"
+      style={{
+        width: 'var(--t-control-h)',
+        height: 'var(--t-control-h)',
+        background: 'transparent',
+        color: hovered ? 'var(--t-accent)' : 'var(--t-text-4)',
+        borderRadius: 'var(--t-radius-lg)',
+        border: 'none',
+        cursor: 'pointer',
+        padding: 0,
+      }}
+      aria-label="Save token changes"
+    >
+      <CheckIcon style={{ width: 'var(--t-icon-base)', height: 'var(--t-icon-base)' }} />
+    </button>
+  );
+}
+
 interface TessorPanelProps {
   children: React.ReactNode;
   isOpen: boolean;
   onToggle: () => void;
   footerInfo?: string;
   exportProgress?: { format: string; percent: number } | null;
+  isDirty?: boolean;
+  onSave?: () => void;
 }
 
-export function TessorPanel({ children, isOpen, onToggle, footerInfo, exportProgress }: TessorPanelProps) {
+export function TessorPanel({ children, isOpen, onToggle, footerInfo, exportProgress, isDirty, onSave }: TessorPanelProps) {
   const [activeTab, setActiveTab] = useState(0);
   const { theme, setTheme } = useTheme();
 
@@ -36,13 +69,18 @@ export function TessorPanel({ children, isOpen, onToggle, footerInfo, exportProg
         style={{ height: 'var(--t-header-h)', borderBottom: 'var(--t-border-w) solid var(--t-panel-border)', paddingLeft: 'var(--t-space-3)', paddingRight: 'var(--t-space-1)' }}
       >
         <h2 style={{ fontSize: 'var(--t-font-md)', color: 'var(--t-text-2)', fontWeight: 'var(--t-font-weight)' }}>Configuration</h2>
-        <button
-          onClick={onToggle}
-          className="flex items-center justify-center transition-colors"
-          style={{ width: 'var(--t-control-h)', height: 'var(--t-control-h)', background: 'transparent', color: 'var(--t-text-2)', borderRadius: 'var(--t-radius-lg)' }}
-        >
-          <Settings2 style={{ width: 'var(--t-icon-base)', height: 'var(--t-icon-base)' }} strokeWidth={1.5} />
-        </button>
+        <div className="flex items-center" style={{ gap: '2px' }}>
+          {isDirty && onSave && (
+            <SaveButton onSave={onSave} />
+          )}
+          <button
+            onClick={onToggle}
+            className="flex items-center justify-center transition-colors"
+            style={{ width: 'var(--t-control-h)', height: 'var(--t-control-h)', background: 'transparent', color: 'var(--t-text-2)', borderRadius: 'var(--t-radius-lg)' }}
+          >
+            <Settings2 style={{ width: 'var(--t-icon-base)', height: 'var(--t-icon-base)' }} strokeWidth={1.5} />
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-shrink-0" style={{ borderBottom: 'var(--t-border-w) solid var(--t-panel-border)', background: 'var(--t-surface-0)' }}>

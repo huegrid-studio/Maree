@@ -2,16 +2,25 @@ import React, { useState, useRef, useEffect, useId } from 'react';
 import { Settings2 } from 'lucide-react';
 import { usePreviewCardContext } from '../../context/PreviewCardContext';
 
+const CheckIcon = ({ style }: { style?: React.CSSProperties }) => (
+  <svg viewBox="0 0 256 256" style={style}>
+    <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z" fill="currentColor" />
+  </svg>
+);
+
 interface PreviewCardProps {
   title: string;
   children: React.ReactNode;
   controls?: React.ReactNode;
   style?: React.CSSProperties;
+  isDirty?: boolean;
+  onSave?: () => void;
 }
 
-export function PreviewCard({ title, children, controls, style }: PreviewCardProps) {
+export function PreviewCard({ title, children, controls, style, isDirty, onSave }: PreviewCardProps) {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [saveHovered, setSaveHovered] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
   const cardId = useId();
@@ -63,7 +72,7 @@ export function PreviewCard({ title, children, controls, style }: PreviewCardPro
         <h3
           style={{
             fontSize: 'var(--t-font-sm)',
-            color: 'var(--t-text-5)',
+            color: 'var(--t-text-4)',
             fontWeight: 'var(--t-font-weight)',
             fontFamily: 'var(--t-font-family)',
             margin: 0,
@@ -72,27 +81,54 @@ export function PreviewCard({ title, children, controls, style }: PreviewCardPro
           {title}
         </h3>
         {controls && (
-          <button
-            onClick={() => setOpen(v => !v)}
-            style={{
-              width: 'var(--t-icon-lg)',
-              height: 'var(--t-icon-lg)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 'var(--t-radius-sm)',
-              border: 'none',
-              background: 'transparent',
-              color: open ? 'var(--t-accent)' : 'var(--t-text-5)',
-              cursor: 'pointer',
-              padding: 0,
-              transition: 'color var(--t-duration-base) ease',
-              flexShrink: 0,
-            }}
-            aria-label="Toggle component controls"
-          >
-            <Settings2 style={{ width: 'var(--t-icon-sm)', height: 'var(--t-icon-sm)' }} strokeWidth={1.5} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+            {open && isDirty && onSave && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onSave(); }}
+                onMouseEnter={() => setSaveHovered(true)}
+                onMouseLeave={() => setSaveHovered(false)}
+                style={{
+                  width: 'var(--t-icon-lg)',
+                  height: 'var(--t-icon-lg)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 'var(--t-radius-sm)',
+                  border: 'none',
+                  background: 'transparent',
+                  color: saveHovered ? 'var(--t-accent)' : 'var(--t-text-4)',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'color var(--t-duration-base) ease',
+                  flexShrink: 0,
+                }}
+                aria-label="Save component settings"
+              >
+                <CheckIcon style={{ width: 'var(--t-icon-sm)', height: 'var(--t-icon-sm)' }} />
+              </button>
+            )}
+            <button
+              onClick={() => setOpen(v => !v)}
+              style={{
+                width: 'var(--t-icon-lg)',
+                height: 'var(--t-icon-lg)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 'var(--t-radius-sm)',
+                border: 'none',
+                background: 'transparent',
+                color: open ? 'var(--t-accent)' : 'var(--t-text-4)',
+                cursor: 'pointer',
+                padding: 0,
+                transition: 'color var(--t-duration-base) ease',
+                flexShrink: 0,
+              }}
+              aria-label="Toggle component controls"
+            >
+              <Settings2 style={{ width: 'var(--t-icon-sm)', height: 'var(--t-icon-sm)' }} strokeWidth={1.5} />
+            </button>
+          </div>
         )}
       </div>
 

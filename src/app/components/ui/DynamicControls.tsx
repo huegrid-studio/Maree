@@ -175,7 +175,7 @@ interface DynamicControlProps {
   onNumericChange?: (v: number) => void;
   onTextChange?: (v: string) => void;
   icon: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   ariaLabel?: string;
   scrollOptions?: string[];
   onScrollChange?: (v: string) => void;
@@ -409,7 +409,7 @@ export function DynamicControl({
         onMouseLeave={isSolo ? undefined : handleMouseLeave}
         onClick={handleClick}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--t-space-1-5)', alignItems: 'flex-start', alignSelf: 'flex-start', flexShrink: 0, minWidth: 'var(--t-label-min-w)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--t-space-1-5)', alignItems: 'flex-start', alignSelf: 'flex-start', flex: children ? '0 0 auto' : '1 1 auto', minWidth: children ? 'var(--t-label-min-w)' : 0 }}>
           <div style={{ display: 'flex', gap: 'var(--t-space-1)', alignItems: 'center', width: 'fit-content' }}>
             <span style={{ fontSize: 'var(--t-font-xs)', color: 'var(--t-label)', lineHeight: 1, whiteSpace: 'nowrap', fontFamily: 'var(--t-font-family)' }}>
               {labelText}
@@ -422,7 +422,7 @@ export function DynamicControl({
           </div>
           <div
             ref={valueRef}
-            style={{ display: 'flex', gap: 'var(--t-space-0-5)', alignItems: 'baseline', whiteSpace: 'nowrap', cursor: (onNumericChange || (scrollOptions && scrollOptions.length > 0)) ? 'ew-resize' : canEdit ? 'text' : 'inherit', lineHeight: 1, minWidth: 'fit-content', borderBottom: canEdit ? `1px solid ${editing ? 'var(--t-input-underline-active)' : 'var(--t-input-underline)'}` : 'none' }}
+            style={{ display: 'flex', gap: 'var(--t-space-0-5)', alignItems: 'baseline', whiteSpace: 'nowrap', cursor: (onNumericChange || (scrollOptions && scrollOptions.length > 0)) ? 'ew-resize' : canEdit ? 'text' : 'inherit', lineHeight: 1, minWidth: children ? 'fit-content' : 0, width: children ? undefined : '100%', borderBottom: canEdit ? `1px solid ${editing ? 'var(--t-input-underline-active)' : 'var(--t-input-underline)'}` : 'none' }}
             onClick={startEdit}
           >
             {editing && canEdit ? (
@@ -440,7 +440,7 @@ export function DynamicControl({
                     padding: 0,
                     margin: 0,
                     outline: 'none',
-                    width: 'var(--t-swatch-w)',
+                    width: children ? 'var(--t-swatch-w)' : '100%',
                     height: 'var(--t-swatch-h)',
                     boxSizing: 'border-box',
                     fontFamily: 'var(--t-font-family)',
@@ -460,18 +460,20 @@ export function DynamicControl({
               </>
             ) : (
               <>
-                <span style={{ fontSize: 'var(--t-font-md)', color: 'var(--t-text)', fontFamily: 'var(--t-font-family)', maxWidth: 'calc(var(--t-control-h-lg) + var(--t-icon-base))', overflow: 'hidden', textOverflow: 'ellipsis' }}>{(scrollOptions && scrollOptions.length > 0) ? value.slice(0, 3) : value}</span>
+                <span style={{ fontSize: 'var(--t-font-md)', color: 'var(--t-text)', fontFamily: 'var(--t-font-family)', maxWidth: children ? 'calc(var(--t-control-h-lg) + var(--t-icon-base))' : undefined, overflow: 'hidden', textOverflow: 'ellipsis' }}>{(scrollOptions && scrollOptions.length > 0) ? value.slice(0, 3) : value}</span>
                 {unit && <span style={{ fontSize: 'var(--t-font-xs)', color: 'var(--t-text-unit)', flexShrink: 0 }}>{unit}</span>}
               </>
             )}
           </div>
         </div>
-        <div
-          style={{ flex: '1 0 0', display: 'flex', alignItems: 'stretch', justifyContent: 'flex-end', minWidth: 0, minHeight: '1px' }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {children}
-        </div>
+        {children && (
+          <div
+            style={{ flex: '1 0 0', display: 'flex', alignItems: 'stretch', justifyContent: 'flex-end', minWidth: 0, minHeight: '1px' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {children}
+          </div>
+        )}
       </div>
     );
   }

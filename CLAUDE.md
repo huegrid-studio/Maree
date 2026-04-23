@@ -32,11 +32,11 @@ npm run build        # production build → dist/
 Maree syncs 26 files (UI components, tokens, utilities, contexts, hooks) from Tessor via its `/api/sync.json` endpoint. Tessor must be running locally for sync to work.
 
 ```bash
-# Start Tessor first (in separate terminal):
+# Start Tessor's Express API first (in separate terminal):
 cd ../Tessor && npm run dev    # Vite :5000 + Express API :3001
 
 # Then sync from Maree:
-node scripts/sync-from-workbench.mjs http://localhost:5000
+node scripts/sync-from-workbench.mjs http://localhost:3001
 ```
 
 The sync script compares MD5 hashes and writes only changed files. Run it whenever you want to pull the latest Tessor changes.
@@ -129,6 +129,15 @@ guidelines/
 ## Export formats
 
 SVG, WEBP, JSON (config), WEBM, MP4 — all handled in `src/app/utils/export.ts`
+
+## Deployment
+
+Deployed on Vercel as a static SPA. Build config lives in `vercel.json` (Vite framework preset, `dist/` output, SPA rewrite).
+
+**Environment variables (Vercel dashboard → Settings → Environment Variables):**
+- `VITE_WORKBENCH_URL` — optional. Set to a deployed Tessor URL to enable runtime token sync in production. Leave unset to disable runtime sync (tokens baked in at build time still work fine).
+
+Locally, `WORKBENCH_URL` defaults to `http://localhost:3001` in dev mode — no env var needed.
 
 ## Do NOT change
 

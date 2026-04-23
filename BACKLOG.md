@@ -13,10 +13,12 @@
 
 | Task | Tool | Platform | Model | Status |
 |---|---|---|---|---|
-| **Set up deployment target** — Vercel/Cloudflare Pages (static site, no backend) | Claude Code | Either | Sonnet | Open |
+| **Set up deployment target** — Vercel/Cloudflare Pages (static site, no backend) | Claude Code | Either | Sonnet | Done |
 | **Configure production WORKBENCH_URL** — once Tessor has a production deployment | Claude Code | Either | Sonnet | Open |
 | **Add CI/CD pipeline** — build + type-check | Claude Code | Either | Sonnet | Open |
 | **Add .nvmrc** — for Node version pinning | Claude Code | Either | Sonnet | Open |
+| **Connect Vercel ↔ GitHub for auto-deploys** — install Vercel GitHub App on huegrid-studio org, then link repo via Vercel dashboard | Web | Either | Sonnet | Open |
+| **Add custom domain** — since Maree is going public, configure a real domain in Vercel (e.g. maree.huegrid.com) | Web | Either | Sonnet | Open |
 
 ## Sync Improvements
 

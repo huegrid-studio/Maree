@@ -139,9 +139,9 @@ SVG, WEBP, JSON (config), WEBM, MP4 — all handled in `src/app/utils/export.ts`
 
 ## Deployment
 
-Deployed on Vercel as a static SPA to the `huegrid` team. Live at **https://hg-maree.vercel.app**. Build config lives in `vercel.json` (Vite framework preset, `dist/` output, SPA rewrite).
+Deployed on **Cloudflare Workers** (static assets) to the `huegrid` account. Live at **https://maree.business-eb4.workers.dev**. Config lives in `wrangler.jsonc` (`assets.directory: ./dist`, `not_found_handling: single-page-application` for the SPA fallback). Deploys from `main` via Workers Builds (`npm run build` → `npx wrangler deploy`); no custom domain yet. *(Migrated off Vercel 2026-06-06 — see Decisions Log. The old `huegrid`/`maree` Vercel project is being decommissioned.)*
 
-**Environment variables (Vercel dashboard → Settings → Environment Variables):**
+**Environment variables (Cloudflare → Worker → Settings → Variables and secrets):**
 - `VITE_WORKBENCH_URL` — optional. Set to a deployed Tessor URL to enable runtime token sync in production. Leave unset to disable runtime sync (tokens baked in at build time still work fine).
 
 Locally, `WORKBENCH_URL` defaults to `http://localhost:3001` in dev mode — no env var needed.
@@ -157,6 +157,7 @@ Locally, `WORKBENCH_URL` defaults to `http://localhost:3001` in dev mode — no 
 
 ## Decisions Log
 
+- **2026-06-06** · Migrated hosting Vercel → **Cloudflare Workers** (static assets) · Maree is a static SPA with no server compute; Workers is Cloudflare's recommended host for new SPAs (Pages is legacy). Config moved from `vercel.json` to `wrangler.jsonc` (`not_found_handling: single-page-application` replaces the SPA rewrite); `.nvmrc` pins Node 22.16.0. Live at `maree.business-eb4.workers.dev`, verified (deep-link 200, SPA fallback works). No custom domain. Follow-up: reconnect the Worker's Git account for push-triggered auto-deploys; decommission the Vercel project. *(The 2026-04-23 Vercel-scope entry below is retained as history.)*
 - **2026-04-23** · Vercel scope = `huegrid` team, not personal · Maree is being made public under HueGrid brand; deploy under the same org as the GitHub repo
 - **2026-04-23** · Dev port 5002 (not 5000) · Tessor's Vite already owns 5000 in local dev; pick a non-colliding port so both can run simultaneously
 - **2026-04-23** · Sync URL points to Express :3001, not Vite :5000 proxy · Fewer moving parts; sync works even when Tessor's Vite isn't running, only Express is required

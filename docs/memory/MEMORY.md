@@ -6,4 +6,4 @@ Portable, version-controlled, project-scoped memory. Read at session start; appe
 
 | Entry | Summary |
 |---|---|
-| [project_setup.md](project_setup.md) | Maree is a browser-only SVG pattern generator; Vite :5002 locally, syncs UI from Tessor Express API at :3001, deployed on Vercel (huegrid team) at hg-maree.vercel.app |
+| [project_setup.md](project_setup.md) | Maree is a browser-only SVG pattern generator; Vite :5002 locally, syncs UI from Tessor Express API at :3001, deployed on Cloudflare Workers (huegrid) at maree.business-eb4.workers.dev |

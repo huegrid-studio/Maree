@@ -1,0 +1,10 @@
+# Cloudflare Pages routing — SPA fallback.
+#
+# Maree is a pure client-rendered Vite SPA (no prerendered pages). CF Pages
+# serves real static files first (assets, splash.html); this catch-all sends
+# every other path to the app shell with a 200 so client-side routes resolve
+# instead of 404ing.
+#
+# Replaces the Vercel `rewrites: /(.*) -> /index.html` config. Clean URLs are
+# native on CF, so no cleanUrls equivalent is needed.
+/*    /index.html   200

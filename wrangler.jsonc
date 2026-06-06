@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers static-assets config for Maree (Vite SPA).
+  // Workers is Cloudflare's recommended host for new SPAs (Pages is legacy).
+  // Pure static for now — no Worker script. When Maree grows an API, add
+  //   "main": "./src/worker.ts", "assets": { ..., "binding": "ASSETS",
+  //   "run_worker_first": ["/api/*"] }  in this same project (no migration).
+  "name": "maree",
+  "compatibility_date": "2026-06-06",
+  "assets": {
+    "directory": "./dist",
+    // Serve index.html (200) for any unmatched path so client routes resolve.
+    // Replaces the Vercel rewrite / Pages _redirects SPA fallback.
+    "not_found_handling": "single-page-application"
+  }
+}

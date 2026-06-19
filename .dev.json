@@ -1,0 +1,15 @@
+{
+  "preview": "http://localhost:5002/",
+  "install": "npm install",
+  "stateDir": ".dev",
+  "services": [
+    {
+      "name": "vite",
+      "port": 5002,
+      "healthUrl": "http://localhost:5002/",
+      "start": "./node_modules/.bin/vite --port 5002 --host 0.0.0.0",
+      "clearCache": ["node_modules/.vite"],
+      "log": "vite.log"
+    }
+  ]
+}

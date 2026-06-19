@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "dev:up": "dev-up",
+    "dev:down": "dev-down"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",

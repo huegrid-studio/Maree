@@ -4,17 +4,18 @@ Browser-only SVG pattern generator — React 18 + TypeScript + Tailwind CSS 4 + 
 
 ## AI Coding Workflow
 
-This repo follows Arjun's hybrid AI coding workflow (Claude Code + Cursor + Codex). See the full spec: https://github.com/arjunphlox/arjun-ai-gems/blob/main/ai-workflow-orchestration.md
+**Cursor Agentic Desktop is the primary harness.** Opus 4.8 *in Cursor* is the planning/thinking/orchestration brain; Composer 2.5 *in Cursor* executes (single sessions, multi-sessions, sub-agents). For small-to-medium, high-clarity tasks, Composer plans *and* executes directly. See the full spec: https://github.com/arjunphlox/arjun-ai-gems/blob/main/workflows/ai-workflow-orchestration.md
 
-**Tool-per-phase:**
-- **Claude Code** — research, planning, architecture, large refactors, MCP-heavy tasks, visual QA. Default tool.
-- **Cursor** — tight-loop IDE editing, UI polish, inline refactors where Tab / Cmd-K velocity matters.
-- **Codex** — async parallel work, mechanical-at-scale (test generation, dependency bumps, find/replace across many files).
+**Claude Code is occasional** — only fan-out Dynamic Workflows (Agent Spawns) and mobile capture (iOS / Remote Control). NOT the default tool or brain.
 
-**Branch prefixes** (keeps parallel work from colliding):
-- `claude/*` — work done in Claude Code
-- `cursor/*` — work done in Cursor
-- `codex/*` — work done in Codex
+**Model routing (3-tier):**
+- **Composer 2.5** (Cursor) — default coding executor: features, UI, fixes, refactors.
+- **Opus 4.8** (Cursor) — hard/risky work + all non-coding latent work (planning, architecture, research, synthesis).
+- **GPT-5.5** — gated: reasoning over a single ~1M-token document, or native Codex/ChatGPT computer-use.
+
+**Branch prefixes** (app-based):
+- `cursor/*` — Cursor sessions
+- `claude/*` — Claude Code sessions
 - `feature/*`, `fix/*` — human-authored or mixed
 
 **BACKLOG schema:** `| Task | Tool | Platform | Model | Status |` — every task gets tool / platform / reasoning-tier classified at capture time. Use `/to-do` to add tasks; it auto-classifies.

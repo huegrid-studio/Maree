@@ -275,8 +275,9 @@ export const exportMP4 = async (
       // Dynamically import the encoder
       const { default: H264MP4Encoder } = await import('h264-mp4-encoder');
       
-      // Initialize encoder
-      const encoder = await H264MP4Encoder.create();
+      // Initialize encoder. Cast preserves the existing runtime call shape;
+      // the library's typed API is createH264MP4Encoder() (see BACKLOG).
+      const encoder = await (H264MP4Encoder as any).create();
       encoder.width = canvas.width;
       encoder.height = canvas.height;
       encoder.frameRate = fps;

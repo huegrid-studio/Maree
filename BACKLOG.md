@@ -8,7 +8,7 @@
 | **Review pnpm.overrides in package.json** — verify if still needed (not using pnpm) | Claude Code | Either | Sonnet | Open |
 | **Review postcss.config.mjs** — may not be needed (Tailwind 4 uses `@tailwindcss/vite`, not PostCSS) | Claude Code | Either | Sonnet | Done — removed (empty config, unused by Vite) |
 | **Break up App.tsx** — ~1800 lines into smaller modules | Claude Code | Web | Opus | Open |
-| **Fix MP4 H264 fallback call** — `export.ts` calls `H264MP4Encoder.create()` but the library's typed API is `createH264MP4Encoder()`; likely broken at runtime. Verify MP4 export in-browser and fix (currently `as any`-cast to keep type-check green) | Claude Code | Either | Sonnet | Open |
+| **Fix MP4 H264 fallback call** — `export.ts` calls `H264MP4Encoder.create()` but the library's typed API is `createH264MP4Encoder()`; likely broken at runtime. Verify MP4 export in-browser and fix (currently `as any`-cast to keep type-check green) | Claude Code | Either | Sonnet | Done — uses `createH264MP4Encoder()` named export |
 
 ## Infrastructure
 

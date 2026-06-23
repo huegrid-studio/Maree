@@ -272,12 +272,10 @@ export const exportMP4 = async (
   
   return new Promise(async (resolve, reject) => {
     try {
-      // Dynamically import the encoder
-      const { default: H264MP4Encoder } = await import('h264-mp4-encoder');
-      
-      // Initialize encoder. Cast preserves the existing runtime call shape;
-      // the library's typed API is createH264MP4Encoder() (see BACKLOG).
-      const encoder = await (H264MP4Encoder as any).create();
+      // Dynamically import the encoder (named export — not a default with .create())
+      const { createH264MP4Encoder } = await import('h264-mp4-encoder');
+
+      const encoder = await createH264MP4Encoder();
       encoder.width = canvas.width;
       encoder.height = canvas.height;
       encoder.frameRate = fps;
@@ -308,7 +306,7 @@ export const exportMP4 = async (
       const mp4Data = encoder.FS.readFile(encoder.outputFilename);
       
       // Create blob and download
-      const blob = new Blob([mp4Data.buffer], { type: 'video/mp4' });
+      const blob = new Blob([new Uint8Array(mp4Data)], { type: 'video/mp4' });
       downloadBlob(blob, 'pattern.mp4');
       
       // Cleanup

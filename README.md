@@ -23,7 +23,7 @@ Output goes to `dist/`.
 
 ## Deployment
 
-Deployed on **Cloudflare Workers** (static assets) to the `huegrid` account — live at **https://maree.business-eb4.workers.dev**. Config lives in `wrangler.jsonc` (`assets.directory: ./dist`, `not_found_handling: single-page-application` for the SPA fallback). To deploy manually:
+Deployed on **Cloudflare Workers** (static assets) to the `huegrid` account — live at **https://maree.huegrid.workers.dev**. Config lives in `wrangler.jsonc` (`assets.directory: ./dist`, `not_found_handling: single-page-application` for the SPA fallback). To deploy manually:
 
 ```bash
 npm run build && npx wrangler deploy

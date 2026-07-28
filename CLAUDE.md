@@ -140,7 +140,7 @@ SVG, WEBP, JSON (config), WEBM, MP4 — all handled in `src/app/utils/export.ts`
 
 ## Deployment
 
-Deployed on **Cloudflare Workers** (static assets) to the `huegrid` account. Live at **https://maree.business-eb4.workers.dev**. Config lives in `wrangler.jsonc` (`assets.directory: ./dist`, `not_found_handling: single-page-application` for the SPA fallback). Deploys from `main` via Workers Builds (`npm run build` → `npx wrangler deploy`); no custom domain yet. *(Migrated off Vercel 2026-06-06 — see Decisions Log. The old `huegrid`/`maree` Vercel project is being decommissioned.)*
+Deployed on **Cloudflare Workers** (static assets) to the `huegrid` account. Live at **https://maree.huegrid.workers.dev**. Config lives in `wrangler.jsonc` (`assets.directory: ./dist`, `not_found_handling: single-page-application` for the SPA fallback). Deploys from `main` via Workers Builds (`npm run build` → `npx wrangler deploy`); no custom domain yet. *(Migrated off Vercel 2026-06-06 — see Decisions Log. The old `huegrid`/`maree` Vercel project is being decommissioned.)*
 
 **Environment variables (Cloudflare → Worker → Settings → Variables and secrets):**
 - `VITE_WORKBENCH_URL` — optional. Set to a deployed Tessor URL to enable runtime token sync in production. Leave unset to disable runtime sync (tokens baked in at build time still work fine).
@@ -158,6 +158,7 @@ Locally, `WORKBENCH_URL` defaults to `http://localhost:3001` in dev mode — no 
 
 ## Decisions Log
 
+- **2026-07-28** · Renamed workers.dev account subdomain `business-eb4` → `huegrid` · Shorter, brand-matched URLs for all HueGrid Workers; Maree now lives at `maree.huegrid.workers.dev` (Tessor at `tessor.huegrid.workers.dev`). Account-wide change made in the CF dashboard — old `*.business-eb4.workers.dev` URLs are dead. Anything launching publicly gets a custom domain anyway; workers.dev stays the interim URL.
 - **2026-06-23** · Added strict `tsconfig.json` + `typecheck` CI gate · Maree had no tsconfig and TS wasn't installed, so builds never type-checked. `noUnusedLocals/Parameters` deliberately off — most violations are in Tessor-synced UI components (overwritten on sync), so that lint belongs upstream, not in this gate. CI (`.github/workflows/ci.yml`) runs `typecheck` + `build` on PRs; no `deploy.yml` (CF Workers Builds owns deploys).
 - **2026-06-23** · Cleaned out Figma-Make scaffold cruft · Removed `package.backup.json`/`package.optimized.json` (`@figma/my-make-file` leftovers), empty `postcss.config.mjs` (Tailwind 4 runs via `@tailwindcss/vite`), and orphaned `skills-lock.json` (no code/sibling repo uses it). Added `.wrangler/`/`*.log` to `.gitignore` to match the CF/Phlox/HueGrid repos.
 - **2026-06-06** · Migrated hosting Vercel → **Cloudflare Workers** (static assets) · Maree is a static SPA with no server compute; Workers is Cloudflare's recommended host for new SPAs (Pages is legacy). Config moved from `vercel.json` to `wrangler.jsonc` (`not_found_handling: single-page-application` replaces the SPA rewrite); `.nvmrc` pins Node 22.16.0. Live at `maree.business-eb4.workers.dev`, verified (deep-link 200, SPA fallback works). No custom domain. Follow-up: reconnect the Worker's Git account for push-triggered auto-deploys; decommission the Vercel project. *(The 2026-04-23 Vercel-scope entry below is retained as history.)*
